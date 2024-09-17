@@ -4,7 +4,7 @@ import TodoApp from './components/TodoApp'
 function App() {
   return (
     <div className='App'>
-      <span className='title'>Список задач</span> <br />
+      <h1 className='title'>Список задач</h1>
       <TodoApp />
     </div>
   )

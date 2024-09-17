@@ -47,7 +47,7 @@ function TodoApp() {
     <div className='todo'>
       <input type='text' name='text' id='text' onChange={e => handleChange(e)} placeholder='Добавьте задачу...' />
       <button className='add-btn' onClick={AddTask}>
-        Добавь
+        Добавить
       </button>
       {tasklist[0] ? (
         <ul>

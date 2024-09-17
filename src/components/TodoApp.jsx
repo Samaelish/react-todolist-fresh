@@ -49,7 +49,6 @@ function TodoApp() {
       <button className='add-btn' onClick={AddTask}>
         Добавь
       </button>
-      <br />
       {tasklist[0] ? (
         <ul>
           {tasklist.map(t => (

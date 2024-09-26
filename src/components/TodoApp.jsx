@@ -3,45 +3,47 @@ import './TodoApp.css'
 
 function TodoApp() {
   const [task, setTask] = useState('')
-  const [tasklist, setTaskList] = useState([])
+  const [taskList, setTaskList] = useState([])
 
-  const handleChange = e => {
+  const handleTaskChange = e => {
     setTask(e.target.value)
   }
 
-  const AddTask = () => {
+  const addNewTask = () => {
     if (task !== '') {
-      const taskDetails = {
-        id: Math.floor(Math.random() * 1000),
-        value: task,
-        isCompleted: false,
-      }
+        const newTask = {
+            id: Math.floor(Math.random() * 1000),
+            value: task,
+            isCompleted: false
+        }
 
-      setTaskList([...tasklist, taskDetails])
+        setTaskList([...taskList, taskDetails])
     }
   }
 
-  const deletetask = (e, id) => {
+  const deleteTask = (e, id) => {
     e.preventDefault()
-    setTaskList(tasklist.filter(t => t.id !== id))
+    setTaskList(taskList.filter(t => t.id !== id))
   }
 
-  const taskCompleted = (e, id) => {
+  const completeTask = (e, id) => {
     e.preventDefault()
-    //let's find index of element
-    const element = tasklist.findIndex(elem => elem.id === id)
+    // finding element's index
+    const element = taskList.findIndex(elem => elem.id === id)
 
-    //copy array into new variable
-    const newTaskList = [...tasklist]
+    // copy array into new variable
+    const newTaskList = [...taskList]
 
-    //edit our element
+    // edit our element
     newTaskList[element] = {
-      ...newTaskList[element],
-      isCompleted: true,
+        ...newTaskList[element],
+        isCompleted: true,
     }
 
     setTaskList(newTaskList)
   }
+
+
 
   return (
     <div className='todo'>
@@ -49,9 +51,9 @@ function TodoApp() {
       <button className='add-btn' onClick={AddTask}>
         Добавить
       </button>
-      {tasklist[0] ? (
+      {taskList[0] ? (
         <ul>
-          {tasklist.map(t => (
+          {taskList.map(t => (
             <li key={Math.random().toString(36).substr(2)} className={t.isCompleted ? 'crossText' : 'listitem'}>
               {t.value}
               <button className='completed' onClick={e => taskCompleted(e, t.id)}>

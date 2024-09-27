@@ -17,7 +17,7 @@ function TodoApp() {
             isCompleted: false
         }
 
-        setTaskList([...taskList, taskDetails])
+        setTaskList([...taskList, newTask])
     }
   }
 

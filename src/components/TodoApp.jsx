@@ -5,7 +5,7 @@ function TodoApp() {
   const [task, setTask] = useState('')
   const [taskList, setTaskList] = useState([])
 
-  const handleTaskChange = e => {
+  const changeTask = e => {
     setTask(e.target.value)
   }
 
@@ -47,8 +47,8 @@ function TodoApp() {
 
   return (
     <div className='todo'>
-      <input type='text' name='text' id='text' onChange={e => handleChange(e)} placeholder='Добавьте задачу...' />
-      <button className='add-btn' onClick={AddTask}>
+      <input type='text' name='text' id='text' onChange={e => changeTask(e)} placeholder='Добавьте задачу...' />
+      <button className='add-btn' onClick={addNewTask}>
         Добавить
       </button>
       {taskList[0] ? (
@@ -56,11 +56,11 @@ function TodoApp() {
           {taskList.map(t => (
             <li key={Math.random().toString(36).substr(2)} className={t.isCompleted ? 'crossText' : 'listitem'}>
               {t.value}
-              <button className='completed' onClick={e => taskCompleted(e, t.id)}>
+              <button className='completed' onClick={e => completeTask(e, t.id)}>
                 Завершено
               </button>
 
-              <button className='delete' onClick={e => deletetask(e, t.id)}>
+              <button className='delete' onClick={e => deleteTask(e, t.id)}>
                 Удалить
               </button>
             </li>
